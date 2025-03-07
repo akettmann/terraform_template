@@ -25,38 +25,7 @@ content: |-
   * Some form of Google authorization
   * A project already created
   * Authorization for Cloud Run in the project
-   ## Usage
-  The defaults will provision a publicly available simple webpage container (us-docker.pkg.dev/cloudrun/container/hello), and can be invoked as simple as replacing YOUR-PROJECT-NAME-HERE:
-  ```hcl
-  module "main" {
-  source = "github.com/akettmann/gcp_serverless_webapp"
-  }
-  provider "google" {
-    project = "YOUR-PROJECT-NAME-HERE"
-  }
-  output "url" {
-    value = module.main.cloud_run_url
-  }
-  ```
-  The main settings you are likely to want, with defaults:
-
-  ```hcl
-  module "main" {
-    source = "github.com/akettmann/gcp_serverless_webapp"
-  {{- $skipList := list "startup_cpu_boost" "deployment_name" "cpu_only_during_requests" "labels" "publicly_visible" "min_instances" "max_instances" }}
-  {{- range .Module.Inputs }}
-    {{- if not (has .Name $skipList) }}
-    # {{ .Description }}
-    {{ .Name }} = {{ .GetValue }}
-    {{- end }}
-  {{- end }}
-  }
-  output "url" {
-    value = module.main.cloud_run_url
-  }
-  ```
-
-  Passing the output from the module at module_name.cloud_run_url outwards will give you the URL to access your service.
+ 
   {{ .Requirements }}
 
   {{ .Providers }}
@@ -70,7 +39,7 @@ content: |-
   {{ .Outputs }}
 
 output:
-  file: ""
+  file: "README.md"
   mode: inject
   template: |-
     <!-- BEGIN_TF_DOCS -->
