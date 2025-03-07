@@ -2,7 +2,7 @@ formatter: "markdown"
 
 version: ""
 
-header-from: ""
+header-from: main.tf
 footer-from: ""
 
 recursive:
@@ -25,7 +25,7 @@ content: |-
   * Some form of Google authorization
   * A project already created
   * Authorization for Cloud Run in the project
- 
+
   {{ .Requirements }}
 
   {{ .Providers }}
